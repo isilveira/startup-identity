@@ -1,6 +1,11 @@
-﻿namespace StartupIdentity.Core.Application
+﻿using MediatR;
+using ModelWrapper;
+
+namespace StartupIdentity.Core.Application
 {
-    public class RequestBase
+    public abstract class RequestBase<TEntity, TResponse> : WrapRequest<TEntity>, IRequest<TResponse>
+        where TEntity : class
+        where TResponse : ResponseBase<TEntity>
     {
     }
 }
