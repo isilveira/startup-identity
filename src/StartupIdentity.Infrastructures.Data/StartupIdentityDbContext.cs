@@ -6,7 +6,7 @@ namespace StartupIdentity.Infrastructures.Data
 {
     public class StartupIdentityDbContext : DbContext
     {
-        public StartupIdentityDbContext([NotNullAttribute] DbContextOptions options) : base(options)
+        public StartupIdentityDbContext([NotNull] DbContextOptions options) : base(options)
         {
         }
 
