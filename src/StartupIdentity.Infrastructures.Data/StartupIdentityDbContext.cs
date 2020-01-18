@@ -13,10 +13,12 @@ namespace StartupIdentity.Infrastructures.Data
 
         public StartupIdentityDbContext([NotNull] DbContextOptions options) : base(options)
         {
+            base.Database.EnsureCreated();
         }
 
         protected StartupIdentityDbContext()
         {
+            base.Database.EnsureCreated();
         }
     }
 }
