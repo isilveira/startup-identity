@@ -21,9 +21,9 @@ Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Presentations", "Presentati
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "StartupIdentity.Presentations.WebAPP", "src\StartupIdentity.Presentations.WebAPP\StartupIdentity.Presentations.WebAPP.csproj", "{261CABCF-28AD-444A-9CA3-24A4091B8AEE}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "StartupIdentity.Middleware.IoC", "StartupIdentity.Middleware.IoC\StartupIdentity.Middleware.IoC.csproj", "{ED197C70-385D-49FA-83E7-07F15AD45E06}"
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "StartupIdentity.Middleware.IoC", "src\StartupIdentity.Middleware.IoC\StartupIdentity.Middleware.IoC.csproj", "{ED197C70-385D-49FA-83E7-07F15AD45E06}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "StartupIdentity.Infrastructures.Data", "StartupIdentity.Infrastructures.Data\StartupIdentity.Infrastructures.Data.csproj", "{F0CB1866-2C84-494E-AD2F-5E034D386187}"
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "StartupIdentity.Infrastructures.Data", "src\StartupIdentity.Infrastructures.Data\StartupIdentity.Infrastructures.Data.csproj", "{F0CB1866-2C84-494E-AD2F-5E034D386187}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution

@@ -5,7 +5,7 @@
   </PropertyGroup>
 
   <ItemGroup>
-    <ProjectReference Include="..\..\StartupIdentity.Middleware.IoC\StartupIdentity.Middleware.IoC.csproj" />
+    <ProjectReference Include="..\StartupIdentity.Middleware.IoC\StartupIdentity.Middleware.IoC.csproj" />
   </ItemGroup>
 
 </Project>
