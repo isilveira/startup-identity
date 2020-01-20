@@ -34,7 +34,7 @@ namespace StartupIdentity.Presentations.WebAPP
             services.AddDefaultIdentity<IdentityUser>(options => options.SignIn.RequireConfirmedAccount = true)
                 .AddEntityFrameworkStores<ApplicationDbContext>();
 
-            services.AddStartupIdentity();
+            services.AddStartupIdentity(Configuration);
 
             services.AddControllersWithViews();
             services.AddRazorPages();

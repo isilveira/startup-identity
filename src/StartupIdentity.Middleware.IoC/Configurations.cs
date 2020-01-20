@@ -1,4 +1,5 @@
 ﻿using Microsoft.AspNetCore.Builder;
+using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;
 using System;
 
@@ -6,7 +7,7 @@ namespace StartupIdentity.Middleware.IoC
 {
     public static class Configurations
     {
-        public static IServiceCollection AddStartupIdentity(this IServiceCollection services)
+        public static IServiceCollection AddStartupIdentity(this IServiceCollection services, IConfiguration configuration)
         {
             // YOUR CODE GOES HERE
             return services;
