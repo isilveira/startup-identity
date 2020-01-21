@@ -1,12 +1,12 @@
 using Microsoft.AspNetCore.Builder;
 using Microsoft.AspNetCore.Hosting;
-using Microsoft.AspNetCore.Identity;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;
 using Microsoft.Extensions.Hosting;
+using StartupIdentity.Core.Domain.Entities;
+using StartupIdentity.Infrastructures.Data;
 using StartupIdentity.Middleware.IoC;
-using StartupIdentity.Presentations.WebAPP.Data;
 
 namespace StartupIdentity.Presentations.WebAPP
 {
@@ -22,11 +22,13 @@ namespace StartupIdentity.Presentations.WebAPP
         // This method gets called by the runtime. Use this method to add services to the container.
         public void ConfigureServices(IServiceCollection services)
         {
-            services.AddDbContext<ApplicationDbContext>(options =>
+            services.AddDbContext<StartupIdentityDbContext>(options =>
                 options.UseSqlServer(
                     Configuration.GetConnectionString("DefaultConnection")));
-            services.AddDefaultIdentity<IdentityUser>(options => options.SignIn.RequireConfirmedAccount = true)
-                .AddEntityFrameworkStores<ApplicationDbContext>();
+            services
+                .AddDefaultIdentity<User>(options => options.SignIn.RequireConfirmedAccount = true)
+                .AddRoles<Role>()
+                .AddEntityFrameworkStores<StartupIdentityDbContext>();
 
             services.AddStartupIdentity(Configuration);
 

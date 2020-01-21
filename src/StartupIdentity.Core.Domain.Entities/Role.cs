@@ -1,10 +1,15 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Text;
+﻿using Microsoft.AspNetCore.Identity;
 
 namespace StartupIdentity.Core.Domain.Entities
 {
-    public class Role
+    public class Role : IdentityRole<string>
     {
+        public Role() : base()
+        {
+        }
+
+        public Role(string roleName) : base(roleName)
+        {
+        }
     }
 }

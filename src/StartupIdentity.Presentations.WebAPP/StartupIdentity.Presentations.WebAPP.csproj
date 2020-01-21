@@ -19,6 +19,8 @@
 
   <ItemGroup>
     <ProjectReference Include="..\StartupIdentity.Core.Application\StartupIdentity.Core.Application.csproj" />
+    <ProjectReference Include="..\StartupIdentity.Core.Domain.Interfaces\StartupIdentity.Core.Domain.Interfaces.csproj" />
+    <ProjectReference Include="..\StartupIdentity.Infrastructures.Data\StartupIdentity.Infrastructures.Data.csproj" />
     <ProjectReference Include="..\StartupIdentity.Middleware.IoC\StartupIdentity.Middleware.IoC.csproj" />
   </ItemGroup>
 
