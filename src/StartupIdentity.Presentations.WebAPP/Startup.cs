@@ -22,9 +22,12 @@ namespace StartupIdentity.Presentations.WebAPP
         // This method gets called by the runtime. Use this method to add services to the container.
         public void ConfigureServices(IServiceCollection services)
         {
+            var migrationsAssembly = typeof(StartupIdentityDbContext).Assembly.GetName().Name;
+
             services.AddDbContext<StartupIdentityDbContext>(options =>
                 options.UseSqlServer(
-                    Configuration.GetConnectionString("DefaultConnection")));
+                    Configuration.GetConnectionString("DefaultConnection"),
+                    builder => builder.MigrationsAssembly(migrationsAssembly)));
             services
                 .AddDefaultIdentity<User>(options => options.SignIn.RequireConfirmedAccount = true)
                 .AddRoles<Role>()
