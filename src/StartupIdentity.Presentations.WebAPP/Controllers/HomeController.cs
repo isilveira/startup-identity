@@ -6,16 +6,21 @@ using System.Threading.Tasks;
 using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.Extensions.Logging;
+using StartupIdentity.Infrastructures.Data;
 using StartupIdentity.Presentations.WebAPP.Models;
 
 namespace StartupIdentity.Presentations.WebAPP.Controllers
 {
     public class HomeController : Controller
     {
+        private readonly StartupIdentityDbContext _context;
         private readonly ILogger<HomeController> _logger;
 
-        public HomeController(ILogger<HomeController> logger)
+        public HomeController(
+            StartupIdentityDbContext context,
+            ILogger<HomeController> logger)
         {
+            _context = context;
             _logger = logger;
         }
 
@@ -26,6 +31,7 @@ namespace StartupIdentity.Presentations.WebAPP.Controllers
         [Authorize]
         public IActionResult Privacy()
         {
+            ViewBag.Users = _context.Users.ToList();
             return View();
         }
 

@@ -15,6 +15,7 @@
 
   <ItemGroup>
     <ProjectReference Include="..\StartupIdentity.Core.Domain.Entities\StartupIdentity.Core.Domain.Entities.csproj" />
+    <ProjectReference Include="..\StartupIdentity.Core.Domain.Interfaces\StartupIdentity.Core.Domain.Interfaces.csproj" />
   </ItemGroup>
 
 </Project>

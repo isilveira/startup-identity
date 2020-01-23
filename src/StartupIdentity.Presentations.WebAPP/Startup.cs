@@ -5,6 +5,7 @@ using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;
 using Microsoft.Extensions.Hosting;
 using StartupIdentity.Core.Domain.Entities;
+using StartupIdentity.Core.Domain.Interfaces.Infrastructures.Contexts;
 using StartupIdentity.Infrastructures.Data;
 using StartupIdentity.Middleware.IoC;
 
