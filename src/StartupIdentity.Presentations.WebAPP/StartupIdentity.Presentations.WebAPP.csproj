@@ -27,4 +27,10 @@
     <ProjectReference Include="..\StartupIdentity.Middleware.IoC\StartupIdentity.Middleware.IoC.csproj" />
   </ItemGroup>
 
+
+  <ItemGroup>
+    <Folder Include="Areas\Authentication\Data\" />
+    <Folder Include="Areas\Authentication\Models\" />
+  </ItemGroup>
+
 </Project>
