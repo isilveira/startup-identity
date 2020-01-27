@@ -79,5 +79,12 @@ namespace StartupIdentity.Presentations.WebAPP.Controllers
         {
             return View();
         }
+        [HttpPost]
+        public async Task<IActionResult> SignOut(AccountSignOutViewModel model)
+        {
+            await _signInManager.SignOutAsync();
+
+            return Redirect(model.RedirectUrl);
+        }
     }
 }

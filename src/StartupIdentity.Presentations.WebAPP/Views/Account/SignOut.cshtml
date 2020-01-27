@@ -1,4 +1,5 @@
-﻿@{
+﻿@model StartupIdentity.Presentations.WebAPP.Models.Account.AccountSignOutViewModel
+@{
     Layout = "_SignLayout";
     ViewData["Title"] = "SignOut";
 }
@@ -6,3 +7,10 @@
 <h1>Account/SignOut</h1>
 
 @Html.ActionLink("Account", "Index") | @Html.ActionLink("SignIn", "SignIn")
+
+@using (Html.BeginForm(FormMethod.Post))
+{
+    <h4>You're signing out, do you want to confim this action?</h4>
+
+    <button type="submit" class="btn btn-danger">Confirm</button>
+}
