@@ -29,6 +29,7 @@ namespace StartupIdentity.Presentations.WebAPP
                 options.UseSqlServer(
                     Configuration.GetConnectionString("DefaultConnection"),
                     builder => builder.MigrationsAssembly(migrationsAssembly)));
+
             services
                 .AddDefaultIdentity<User>(options => options.SignIn.RequireConfirmedAccount = true)
                 .AddRoles<Role>()

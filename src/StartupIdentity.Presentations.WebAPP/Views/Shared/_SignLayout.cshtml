@@ -9,6 +9,12 @@
 </head>
 <body>
     <div class="container-fluid">
+        <div class="row">
+            <div class="col-12">
+                @Html.ActionLink("Account", "Index") | @Html.ActionLink("SignUp", "SignUp") | @Html.ActionLink("SignOut", "SignOut")
+            </div>
+        </div>
+
         @RenderBody()
     </div>
 

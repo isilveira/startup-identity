@@ -86,5 +86,12 @@ namespace StartupIdentity.Presentations.WebAPP.Controllers
 
             return Redirect(model.RedirectUrl);
         }
+
+        public async Task<IActionResult> SignUp()
+        {
+            AccountSignUpViewModel model = new AccountSignUpViewModel();
+
+            return View(model);
+        }
     }
 }
