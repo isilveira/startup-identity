@@ -19,6 +19,7 @@
 
   <ItemGroup>
     <ProjectReference Include="..\StartupIdentity.Infrastructures.Data\StartupIdentity.Infrastructures.Data.csproj" />
+    <ProjectReference Include="..\StartupIdentity.Middleware.IoC\StartupIdentity.Middleware.IoC.csproj" />
   </ItemGroup>
 
 </Project>

@@ -13,6 +13,7 @@ using Microsoft.Extensions.DependencyInjection;
 using Microsoft.Extensions.Hosting;
 using StartupIdentity.Infrastructures.Data;
 using StartupIdentity.Core.Domain.Entities;
+using StartupIdentity.Middleware.IoC;
 
 namespace StartupIdentity.Presentations.IdentityWebAPP
 {
@@ -28,12 +29,9 @@ namespace StartupIdentity.Presentations.IdentityWebAPP
         // This method gets called by the runtime. Use this method to add services to the container.
         public void ConfigureServices(IServiceCollection services)
         {
-            services.AddDbContext<StartupIdentityDbContext>(options =>
-                options.UseSqlServer(
-                    Configuration.GetConnectionString("DefaultConnection")));
-            services.AddDefaultIdentity<User>(options => options.SignIn.RequireConfirmedAccount = true)
-                .AddRoles<Role>()
-                .AddEntityFrameworkStores<StartupIdentityDbContext>();
+            services.AddStartupIdentityDbContexts(Configuration);
+            services.AddIdentityConfiguration();
+
             services.AddControllersWithViews();
             services.AddRazorPages();
         }
@@ -57,8 +55,7 @@ namespace StartupIdentity.Presentations.IdentityWebAPP
 
             app.UseRouting();
 
-            app.UseAuthentication();
-            app.UseAuthorization();
+            app.UseStartupIdentity();
 
             app.UseEndpoints(endpoints =>
             {
