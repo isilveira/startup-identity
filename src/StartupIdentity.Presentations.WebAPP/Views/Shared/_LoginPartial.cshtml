@@ -1,0 +1,12 @@
+﻿@using Microsoft.AspNetCore.Identity
+@using StartupIdentity.Core.Domain.Entities
+@inject SignInManager<User> SignInManager
+
+@if (SignInManager.IsSignedIn(User))
+{
+    <text> Hello @User.Identity.Name | @Html.ActionLink("Sign out", "SignOut", "Account")</text>
+}
+else
+{
+    <text>@Html.ActionLink("Sign in", "SignIn", "Account") | @Html.ActionLink("Sign up", "SignUp", "Account")</text>
+}

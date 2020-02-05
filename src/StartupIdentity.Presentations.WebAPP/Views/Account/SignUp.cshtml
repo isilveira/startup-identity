@@ -1,5 +1,29 @@
-﻿@{
+﻿@model StartupIdentity.Presentations.WebAPP.Models.Account.AccountSignUpViewModel
+@{
     ViewData["Title"] = "Sign up";
 }
 
 <h1>Account/SignUp</h1>
+@using (Html.BeginForm(FormMethod.Post))
+{
+    @Html.AntiForgeryToken()
+    @Html.ValidationSummary(true)
+
+    @Html.LabelFor(x => x.Email)
+    @Html.EditorFor(x => x.Email)
+    @Html.ValidationMessageFor(x => x.Email)
+
+    <br />
+
+    @Html.LabelFor(x => x.Password)
+    @Html.EditorFor(x => x.Password)
+    @Html.ValidationMessageFor(x => x.Password)
+
+    <br />
+
+    @Html.LabelFor(x => x.ConfirmPassword)
+    @Html.EditorFor(x => x.ConfirmPassword)
+    @Html.ValidationMessageFor(x => x.ConfirmPassword)
+
+    <button type="submit">Sign up!</button>
+}
