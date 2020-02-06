@@ -1,0 +1,28 @@
+﻿@model StartupIdentity.Presentations.WebAPP.Models.Account.AccountManageViewModel
+@{
+    ViewData["Title"] = "Manage";
+}
+
+<h1>Account/Manage</h1>
+
+<partial name="_ManageHeader"/>
+
+@using (Html.BeginForm(FormMethod.Post))
+{
+    @Html.AntiForgeryToken()
+    @Html.ValidationSummary(true)
+
+    @Html.LabelFor(x => x.UserName)
+    @Html.EditorFor(x => x.UserName, new{ htmlAttributes = new { @disabled="disabled" } })
+
+    <br/>
+
+    @Html.LabelFor(x=>x.PhoneNumber)
+    @Html.EditorFor(x=>x.PhoneNumber)
+    @Html.ValidationMessageFor(x=>x.PhoneNumber)
+
+    <br/>
+
+    <button type="submit">Save!</button>
+
+}

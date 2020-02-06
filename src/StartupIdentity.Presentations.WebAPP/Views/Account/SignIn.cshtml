@@ -5,28 +5,20 @@
 
 <h1>Account/SignIn</h1>
 
-@using (Html.BeginForm(FormMethod.Post))
-{
-    @Html.AntiForgeryToken()
-    @Html.ValidationSummary(true)
+<form method="post">
+    <h4>Sign in.</h4>
+    <hr />
+    <div asp-validation-summary="All" class="text-danger"></div>
+    <div class="form-group">
+        <label asp-for="@Model.Email"></label>
+        <input asp-for="@Model.Email" class="form-control" />
+        <span asp-validation-for="@Model.Email" class="text-danger"></span>
+    </div>
+    <div class="form-group">
+        <label asp-for="@Model.Password"></label>
+        <input asp-for="@Model.Password" class="form-control" />
+        <span asp-validation-for="@Model.Password" class="text-danger"></span>
+    </div>
 
-    @Html.LabelFor(x => x.Email)
-    @Html.EditorFor(x => x.Email)
-    @Html.ValidationMessageFor(x => x.Email)
-
-    <br />
-
-    @Html.LabelFor(x => x.Password)
-    @Html.EditorFor(x => x.Password)
-    @Html.ValidationMessageFor(x => x.Password)
-
-    <br />
-
-    @Html.CheckBoxFor(x => x.RememberMe)
-    @Html.LabelFor(x => x.RememberMe)
-    @Html.ValidationMessageFor(x => x.RememberMe)
-
-    <br />
-
-    <button type="submit">Sign in!</button>
-}
+    <button type="submit" class="btn btn-primary">Sign in</button>
+</form>

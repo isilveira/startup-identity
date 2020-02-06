@@ -5,9 +5,9 @@ using System.Threading.Tasks;
 
 namespace StartupIdentity.Presentations.WebAPP.Models.Account
 {
-    public class AccountConfirmEmailViewModel
+    public class AccountSignUpConfirmEmailViewModel
     {
         public string StatusMessage { get; set; }
-        public AccountConfirmEmailViewModel() { }
+        public AccountSignUpConfirmEmailViewModel() { }
     }
 }

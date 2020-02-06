@@ -32,6 +32,8 @@ namespace StartupIdentity.Presentations.WebAPP.Controllers
             SignInManager = signInManager;
             UserManager = userManager;
         }
+
+        #region SignUp Methods
         public IActionResult SignUp()
         {
             return View(new AccountSignUpViewModel());
@@ -54,7 +56,7 @@ namespace StartupIdentity.Presentations.WebAPP.Controllers
                 var code = await UserManager.GenerateEmailConfirmationTokenAsync(user);
                 code = WebEncoders.Base64UrlEncode(Encoding.UTF8.GetBytes(code));
                 var callbackUrl = Url.Action(
-                    "ConfirmEmail", "Account",                    
+                    "ConfirmEmail", "Account",
                     values: new { area = "Identity", userId = user.Id, code = code },
                     protocol: Request.Scheme);
 
@@ -84,7 +86,7 @@ namespace StartupIdentity.Presentations.WebAPP.Controllers
 
             if (email == null)
             {
-                return RedirectToAction("Index","Home");
+                return RedirectToAction("Index", "Home");
             }
 
             var user = await UserManager.FindByEmailAsync(email);
@@ -109,9 +111,9 @@ namespace StartupIdentity.Presentations.WebAPP.Controllers
 
             return View(model);
         }
-        public async Task<IActionResult> ConfirmEmail(string userId, string code)
+        public async Task<IActionResult> SignUpConfirmEmail(string userId, string code)
         {
-            AccountConfirmEmailViewModel model = new AccountConfirmEmailViewModel();
+            AccountSignUpConfirmEmailViewModel model = new AccountSignUpConfirmEmailViewModel();
             if (userId == null || code == null)
             {
                 return RedirectToAction("Index", "Home");
@@ -129,12 +131,14 @@ namespace StartupIdentity.Presentations.WebAPP.Controllers
             model.StatusMessage = result.Succeeded ? "Thank you for confirming your email." : "Error confirming your email.";
 
             return View(model);
-        }
+        } 
+        #endregion
+
+        #region SignIn Methods
         public IActionResult SignIn()
         {
             return View(new AccountSignInViewModel());
         }
-
         [HttpPost]
         public async Task<IActionResult> SignIn(AccountSignInViewModel model)
         {
@@ -166,7 +170,10 @@ namespace StartupIdentity.Presentations.WebAPP.Controllers
                 ModelState.AddModelError(string.Empty, "Invalid login attempt.");
                 return View(model);
             }
-        }
+        } 
+        #endregion
+
+        #region SignOut Methods
         public IActionResult SignOut()
         {
             return View(new AccountSignOutViewModel());
@@ -183,5 +190,27 @@ namespace StartupIdentity.Presentations.WebAPP.Controllers
 
             return RedirectToAction("Index", "Home");
         }
+        #endregion
+
+        #region Manage Methods
+        public async Task<IActionResult> Manage()
+        {
+            AccountManageViewModel model = new AccountManageViewModel();
+
+            var user = await UserManager.GetUserAsync(User);
+            if (user == null)
+            {
+                return NotFound($"Unable to load user with ID '{ UserManager.GetUserId(User) }'.");
+            }
+
+            var userName = await UserManager.GetUserNameAsync(user);
+            var phoneNumber = await UserManager.GetPhoneNumberAsync(user);
+
+            model.UserName = userName;
+            model.PhoneNumber = phoneNumber;
+
+            return View(model);
+        }
+        #endregion
     }
 }

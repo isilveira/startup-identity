@@ -4,7 +4,7 @@
 
 @if (SignInManager.IsSignedIn(User))
 {
-    <text> Hello @User.Identity.Name | @Html.ActionLink("Sign out", "SignOut", "Account")</text>
+    <text> @Html.ActionLink("Hello "+ User.Identity.Name,"Manage","Account") | @Html.ActionLink("Sign out", "SignOut", "Account")</text>
 }
 else
 {
